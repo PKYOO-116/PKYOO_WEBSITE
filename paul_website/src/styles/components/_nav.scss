@@ -1,5 +1,5 @@
 .nav {
-  @include sticky-header;                  /* sticky top:0; z-index; blur 등 mixin */
+  @include sticky-header;
   border-bottom: 1px solid $border;
   background: rgba(0, 0, 0, 0.9);
   mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
@@ -9,7 +9,7 @@
   width: 100%;
   max-width: none;
   margin: 0;
-  padding-left: clamp(20px, 12vw, 200px);  /* 최소 20px, 화면 넓이에 따라 늘어나고 최대 200px */
+  padding-left: clamp(20px, 12vw, 200px);
   padding-right: 16px;
 }
 
@@ -18,20 +18,19 @@
   display: flex;
   gap: 15px;
   align-items: center;
-  justify-content: flex-start;             /* ← 왼쪽 정렬 고정 */
-  overflow-x: auto;           /* ✅ 필요 시 좌우 스크롤 */
+  justify-content: flex-start;
+  overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  white-space: nowrap;        /* 리스트 자체도 줄바꿈 금지 */
+  white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-/* 기본 폰트 크기·굵기 동일 유지 → 활성 시 폭이 변하지 않음 */
 .nav__item {
-  position: relative;             /* ✅ 반드시 필요 */
+  position: relative;
   display: inline-flex;
   align-items: center;
   padding: 8px 12px;
@@ -52,7 +51,7 @@
 .nav__item--active::after {
   content: "";
   position: absolute;
-  left: 8px;                      /* 아이템 내부에서만 그려짐 */
+  left: 8px;
   right: 8px;
   bottom: -6px;
   height: 2px;

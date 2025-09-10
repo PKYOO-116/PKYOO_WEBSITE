@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Nav() {
@@ -18,7 +17,7 @@ export default function Nav() {
             <NavLink
               key={l.to}
               to={l.to}
-              end
+              end={l.to === "/"}
               className={({ isActive }) =>
                 `nav__item${isActive ? " nav__item--active" : ""}`
               }
