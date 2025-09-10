@@ -1,0 +1,16 @@
+/* src/styles/main.scss — 엔트리 전용 */
+@import "./variables";
+@import "./mixins";
+@import "./reset";
+@import "./layout";
+
+/* 컴포넌트 */
+@import "./components/nav";
+@import "./components/footer";
+
+/* 페이지(섹션) */
+@import "./sections/home";
+@import "./sections/whoami";
+@import "./sections/projects";
+@import "./sections/daily";
+@import "./sections/contact";

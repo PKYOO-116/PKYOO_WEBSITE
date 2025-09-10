@@ -1,0 +1,57 @@
+.footer{
+  margin: 100px 0 0;
+  background:#1f1f1f;                /* 어두운 바탕 */
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer__wrap{ padding: 18px 0; }
+
+.footer__cols{
+  display:grid;
+  grid-template-columns: 1fr auto;   /* 왼: 링크, 오: 이름 */
+  align-items:center;
+  gap: clamp(12px, 3vw, 28px);
+}
+
+/* contacts */
+.footer__contacts{
+  margin:0; padding:0; list-style:none;
+  display:grid; gap: 10px;
+}
+.footer__contacts li{
+  display:grid; grid-template-columns: auto 1fr;
+  align-items:center; column-gap: 16px;
+}
+.footer__label{
+  display:inline-flex; align-items:center; gap:10px;
+  min-width: 110px;
+  font:600 clamp(12px,1.4vw,16px)/1.2 sans-serif;
+  color: rgba(255,255,255,.95);
+}
+.footer__label img{ width:18px; height:18px; object-fit:contain; }
+
+/* 이메일 아이콘 흰 박스 */
+.footer__iconbox{
+  display:inline-flex; background:#fff; border-radius:8px;
+  padding:1px; line-height:0;
+}
+.footer__iconbox img{ width:16px; height:16px; object-fit:contain; }
+
+.footer__value{
+  color:#fff; opacity:.92; text-decoration:none;
+  font:400 clamp(12px,1.5vw,16px)/1.5 sans-serif;
+  word-break: break-word;
+}
+.footer__value:hover{ text-decoration:underline; }
+
+/* name on right */
+.footer__name{
+  font:1000 clamp(18px, 3vw,100px)/1.1 sans-serif;
+  color:#fff; text-align:right; white-space:nowrap;
+}
+
+/* responsive: 세로 스택 */
+@media (max-width: 720px){
+  .footer__cols{ grid-template-columns: 1fr; }
+  .footer__name{ text-align:left; }
+}

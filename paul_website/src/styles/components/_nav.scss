@@ -1,0 +1,61 @@
+.nav {
+  @include sticky-header;                  /* sticky top:0; z-index; blur 등 mixin */
+  border-bottom: 1px solid $border;
+  background: rgba(0, 0, 0, 0.9);
+  mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+.nav__wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: clamp(20px, 12vw, 200px);  /* 최소 20px, 화면 넓이에 따라 늘어나고 최대 200px */
+  padding-right: 16px;
+}
+
+.nav__list {
+  height: 60px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-start;             /* ← 왼쪽 정렬 고정 */
+  overflow-x: auto;           /* ✅ 필요 시 좌우 스크롤 */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;        /* 리스트 자체도 줄바꿈 금지 */
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 기본 폰트 크기·굵기 동일 유지 → 활성 시 폭이 변하지 않음 */
+.nav__item {
+  position: relative;             /* ✅ 반드시 필요 */
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  transition: background .2s ease;
+  font-weight: 700;
+  font-size: clamp(13px, 1.4vw, 20px);
+  white-space: nowrap;
+  flex: 0 0 auto;
+  ::-webkit-scrollbar { display: none;}
+  &:hover { background: #111; }
+}
+
+.nav__item--active { background: #111; }
+
+.nav__item--active::after {
+  content: "";
+  position: absolute;
+  left: 8px;                      /* 아이템 내부에서만 그려짐 */
+  right: 8px;
+  bottom: -6px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+}
