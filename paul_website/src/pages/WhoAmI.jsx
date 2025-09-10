@@ -27,7 +27,7 @@ import logoSYPM from "../logos/SYPM.png";
 import logoAAII from "../logos/AAII_Logo-White.svg";
 import logoFMA from "../logos/fma.png";
 import logoGoel from "../logos/goel-community.png";
-import photoVolunteer1 from "../pics/WhoAmI/Takeo_work.JPG";
+import photoVolunteer1 from "../pics/WhoAmI/Takeo_work.jpg";
 import photoVolunteer2 from "../pics/WhoAmI/DSC03211.JPG";
 
 // Skills logos
