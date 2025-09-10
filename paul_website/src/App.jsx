@@ -1,15 +1,14 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import WhoAmI from "./pages/WhoAmI";
-import Projects from "./pages/Projects";
-import Daily from "./pages/Daily";
-import Contact from "./pages/Contact";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import WhoAmI from "./pages/WhoAmI.jsx";
+import Projects from "./pages/Projects.jsx";
+import Daily from "./pages/Daily.jsx";
+import Contact from "./pages/Contact.jsx";
+import Nav from "./components/Nav.jsx";
 
 export default function App() {
   return (
-    <BrowserRouter basename="/">
+    <>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,6 +17,6 @@ export default function App() {
         <Route path="/daily" element={<Daily />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
