@@ -5,5 +5,4 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: "/PKYOO_WEBSITE/",
-  build: { outDir: 'docs'}
 });
