@@ -1,14 +1,10 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useEffect, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import ContactList from "../components/ContactList";
 
-const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
 export default function Contact() {
-  
-  const form = useRef();
+  const [formState, handleSubmit] = useForm("mnngvelw");
+  const [showPopup, setShowPopup] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,30 +15,19 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Field: ${name}, Value: ${value}`);
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      serviceID,
-      templateID,
-      form.current,
-      publicKey
-    )
-    .then(() => {
-      alert("Message sent!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    })
-    .catch(() => {
-      alert("Failed to send message. Please try again.");
-    });
-  };
+  useEffect(() => {
+    if (formState.succeeded) {
+      setShowPopup(true);
+      const timer = setTimeout(() => setShowPopup(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [formState.succeeded]);
 
   return (
     <section className="contact whoSec">
@@ -52,7 +37,7 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-5">
-          <form className="contact__form" ref={form} onSubmit={handleSubmit}>
+          <form className="contact__form" onSubmit={handleSubmit}>
             <label>
               Name
               <input
@@ -73,6 +58,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
               />
+              <ValidationError prefix="Email" field="email" errors={formState.errors} />
             </label>
 
             <label>
@@ -94,10 +80,15 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-              ></textarea>
+              />
+              <ValidationError prefix="Message" field="message" errors={formState.errors} />
             </label>
 
-            <button type="submit" className="contact__sendBtn">
+            <button
+              type="submit"
+              className="contact__sendBtn"
+              disabled={formState.submitting}
+            >
               Send Message
             </button>
           </form>
@@ -107,6 +98,18 @@ export default function Contact() {
             <ContactList />
           </div>
         </div>
+
+        {showPopup && (
+          <div className="popup">
+            <div className="popup__content">
+              <span className="popup__close" onClick={() => setShowPopup(false)}>
+                &times;
+              </span>
+              <p> Thank you for reaching out! </p>
+              <p> I received your message. </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
