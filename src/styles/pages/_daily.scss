@@ -1,0 +1,222 @@
+@use "../foundation" as f;
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile --------------------------------------------------------------------------------------------------------------------------------- */
+.daily {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+
+    .grid-1 {
+      grid-area: 1 / 1 / 2 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+      z-index: 10;
+
+      h1.daily__title {
+        font-size: 35px;
+        font-weight: 700;
+        text-align: center;
+        user-select: none;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      h2.daily__photograph {
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0;
+        opacity: 0;
+        user-select: none;
+        animation: fadeIn 1s ease 0.5s forwards;
+      }
+
+      .daily__instruction {
+        margin-top: 10px;
+        font-size: 14px;
+        color: rgba(f.$white, 0.7);
+        opacity: 0;
+        text-align: center;
+        user-select: none;
+        animation: fadeIn 0.8s ease forwards, bounceDown 1.5s ease-in-out infinite;
+        animation-delay: 0.5s, 1s;
+      }
+    }
+
+    .grid-5 {
+      grid-area: 2 / 1 / 4 / 4;
+      position: relative;
+      width: 90vw;
+      height: 180vh;
+      z-index: 1;
+
+      .daily__photo {
+        position: absolute;
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(f.$white, 0.4);
+        opacity: 1;
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+        pointer-events: auto;
+      }
+    }
+
+    .daily__fullscreenOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(f.$black, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .daily__imgCloseBtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: f.$white;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .daily {
+    .container {
+      .grid-1 {
+        h1.daily__title {
+          font-size: 45px;
+        }
+
+        h2.daily__photograph {
+          font-size: 28px;
+        }
+
+        .daily__instruction {
+          font-size: 16px;
+        }
+      }
+
+      .grid-5 {
+        .daily__photo {
+          width: 130px;
+        }
+      }
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .daily {
+    .container {
+      .grid-1 {
+        margin-top: 60px;
+
+        h1.daily__title {
+          font-size: 50px;
+        }
+
+        h2.daily__photograph {
+          font-size: 32px;
+        }
+
+        .daily__instruction {
+          font-size: 18px;
+        }
+      }
+
+      .grid-5 {
+        .daily__photo {
+          width: 150px;
+        }
+
+        .daily__fullscreenOverlay {
+          .daily__imgCloseBtn {
+            top: 50px;
+            right: 50px;
+            font-size: 35px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .daily {
+    .container {
+      .grid-1 {
+        margin-top: clamp(60px, 5vh, 130px);
+
+        h1.daily__title {
+          font-size: clamp(50px, 4.1vh, 110px);
+        }
+
+        h2.daily__photograph {
+          font-size: clamp(32px, 2.6vh, 65px);
+        }
+
+        .daily__instruction {
+          font-size: clamp(18px, 1.4vh, 35px);
+        }
+      }
+
+      .grid-5 {
+        .daily__photo {
+          width: clamp(150px, 7.8vw, 300px);
+        }
+
+        .daily__fullscreenOverlay {
+          .daily__imgCloseBtn {
+            top: clamp(50px, 4.1vh, 110px);
+            right: clamp(50px, 4.1vh, 110px);
+            font-size: clamp(35px, 2.9vh, 75px);
+          }
+        }
+      }
+    }
+  }
+}

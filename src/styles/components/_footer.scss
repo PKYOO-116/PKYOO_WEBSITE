@@ -1,0 +1,150 @@
+@use "../foundation" as f;
+
+/* Mobile --------------------------------------------------------------------------------------------------------------------------------- */
+.footer {
+  background: f.$grey;
+  height: 150px;
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .footer__contacts {
+    ul {
+      display: grid;
+      row-gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      font-size: 14px;
+      font-family: f.$font-contact;
+
+      img {
+        width: 20px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .icon__email {
+        background-color: f.$white;
+        border-radius: 50%;
+        padding: 2px;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footer__name {
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .footer {
+    height: 200px;
+
+    .container {
+      padding: 40px;
+    }
+
+    .footer__contacts {
+      ul {
+        row-gap: 12px;
+      }
+
+      li {
+        gap: 20px;
+        font-size: 14px;
+
+        img {
+          width: 22px;
+        }
+      }
+    }
+
+    .footer__name {
+      font-size: 22px;
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .footer {
+    height: 250px;
+
+    .container {
+      padding: 40px 80px;
+    }
+
+    .footer__contacts {
+      ul {
+        row-gap: 18px;
+      }
+
+      li {
+        gap: 25px;
+        font-size: 16px;
+
+        img {
+          width: 28px;
+        }
+      }
+    }
+
+    .footer__name {
+      font-size: 28px;
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .footer {
+    height: clamp(250px, 20.8vh, 550px);
+
+    .container {
+      padding: clamp(40px, 3.3vh, 90px) clamp(80px, 8vw, 310px);
+    }
+
+    .footer__contacts {
+      ul {
+        row-gap: clamp(18px, 1.4vh, 35px);
+      }
+
+      li {
+        gap: clamp(25px, 2vh, 50px);
+        font-size: clamp(16px, 0.8vw, 30px);
+
+        img {
+          width: clamp(28px, 2.3vh, 60px);
+        }
+      }
+    }
+
+    .footer__name {
+      font-size: clamp(28px, 1.4vw, 55px);
+    }
+  }
+}

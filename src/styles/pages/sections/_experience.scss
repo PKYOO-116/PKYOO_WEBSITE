@@ -1,0 +1,488 @@
+@use "../../foundation" as f;
+
+/* Mobile --------------------------------------------------------------------------------------------------------------------------------- */
+.experience {
+  .container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+
+    .grid-1 {
+      grid-area: 1 / 1 / 2 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      height: 400px;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      .exp__sloganWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 200px;
+        padding: 30px 0;
+        margin: 40px 0;
+
+        .exp__sloganLine {
+          width: 80px;
+          height: 3px;
+          background: f.$white;
+          opacity: 0.8;
+        }
+
+        .exp__slogan {
+          h2.exp__sloganText {
+            font: 500 20px f.$font-base;
+            text-align: center;
+            margin: 0;
+          }
+        }
+      }
+
+      h1.exp__title {
+        font:700 35px f.$font-base;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    }
+
+    .grid-5 {
+      grid-area: 2 / 1 / 4 / 4;
+      position: relative;
+      margin: 0 auto;
+      padding-top: 100px;
+      padding-left: 2px;
+      width: 95%;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: rgba(f.$white, 0.2);
+      }
+
+      .timeline__item {
+        position: relative;
+        margin-bottom: 80px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+
+        &.in-view {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 7px;
+          top: 5px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: f.$white;
+          border: 3px solid f.$point1;
+        }
+
+        .timeline__logo {
+          width: 200px;
+          height: auto;
+          margin: 20px 0 20px 50px;
+          cursor: zoom-in;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        .timeline__content {
+          margin-left: 35px;
+          margin-right: 10px;
+          background: rgba(f.$white, 0.04);
+          border-radius: 10px;
+          padding: 20px;
+          border-left: 4px solid f.$point1;
+          color: f.$white;
+
+          .timeline__period {
+            font: 600 14px f.$font-base;
+            opacity: 0.7;
+          }
+
+          .timeline__role {
+            font: 700 20px f.$font-base;
+            margin: 5px 0;
+          }
+
+          .timeline__company {
+            font: 600 16px f.$font-base;
+            color: f.$point1;
+            margin: 0;
+          }
+
+          .timeline__location {
+            font: 400 14px f.$font-base;
+            opacity: 0.6;
+            margin: 5px 0 10px 0;
+          }
+
+          .timeline__bullets {
+            padding-left: 20px;
+            margin: 20px 0;
+
+            li {
+              list-style: disc;
+              margin: 5px 0;
+              font: 300 14px f.$font-base;
+            }
+          }
+
+          .timeline__tech,
+          .timeline__kpis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+
+            .timeline__chip,
+            .timeline__kpi {
+              color: f.$black;
+              padding: 4px 10px;
+              font-size: 14px;
+              font-weight: 700;
+              border-radius: 6px;
+            }
+
+            .timeline__chip {
+              background: f.$point1;
+            }
+
+            .timeline__kpi {
+              background: f.$point2
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .experience {
+    .container {      
+      .grid-1 {
+        height: 450px;
+
+        .exp__sloganWrapper {
+          height: 230px;
+
+          .exp__sloganLine {
+            width: 100px;
+          }
+
+          .exp__slogan {
+            h2.exp__sloganText {
+              font-size: 30px;
+            }
+          }
+        }
+
+        h1.exp__title {
+          font-size: 45px;
+        }
+      }
+
+      .grid-5 {
+        padding-top: 120px;
+        padding-left: 2px;
+
+        &::before {
+          left: 20px;
+        }
+
+        .timeline__item {
+          &::before {
+            left: 11px;
+            width: 16px;
+            height: 16px;
+          }
+
+          .timeline__logo {
+            width: 300px;
+            height: auto;
+            margin: 20px 0 20px 50px;
+          }
+
+          .timeline__content {
+            margin-left: 45px;
+            margin-right: 20px;
+            border-radius: 15px;
+            padding: 25px;
+
+            .timeline__period {
+              font-size: 16px;
+            }
+
+            .timeline__role {
+              font-size: 23px;
+              margin: 10px 0;
+            }
+
+            .timeline__company {
+              font-size: 20px;
+            }
+
+            .timeline__location {
+              font-size: 16px;
+              margin: 10px 0 15px 0;
+            }
+
+            .timeline__bullets {
+              padding-left: 25px;
+              margin: 25px 0;
+
+              li {
+                list-style: disc;
+                margin: 10px 0;
+                font-size: 16px;
+              }
+            }
+
+            .timeline__tech,
+            .timeline__kpis {
+              margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .experience {
+    .container {
+      .grid-1 {
+        height: 500px;
+
+        .exp__sloganWrapper {
+          height: 250px;
+          padding: 30px 0;
+          margin: 40px 0;
+
+          .exp__sloganLine {
+            width: 120px;
+            height: 3px;
+          }
+
+          .exp__slogan {
+            h2.exp__sloganText {
+              font-size: 35px;
+            }
+          }
+        }
+
+        h1.exp__title {
+          font-size: 50px;
+          margin-bottom: 40px;
+        }
+      }
+
+      .grid-5 {
+        padding-top: 150px;
+        padding-left: 2px;
+        width: 60%;
+
+        &::before {
+          left: 15px;
+          width: 4px;
+        }
+
+        .timeline__item {
+          margin-bottom: 100px;
+
+          &::before {
+            left: 5px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 6px solid f.$point1;
+          }
+
+          .timeline__logo {
+            width: 350px;
+            height: auto;
+            margin: 20px 0 20px 60px;
+          }
+
+          .timeline__content {
+            margin-left: 50px;
+            margin-right: 35px;
+            border-radius: 10px;
+            padding: 30px;
+            border-left: 8px solid f.$point1;
+
+            .timeline__period {
+              font-size: 16px;
+            }
+
+            .timeline__role {
+              font-size: 23px;
+              margin: 14px 0;
+            }
+
+            .timeline__company {
+              font-size: 20px;
+              margin: 0;
+            }
+
+            .timeline__location {
+              font-size: 16px;
+            }
+
+            .timeline__bullets {
+              padding-left: 18px;
+              margin: 20px 0;
+
+              li {
+                margin: 10px;
+                font-size: 16px;
+              }
+            }
+
+            .timeline__tech,
+            .timeline__kpis {
+              margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .experience {
+    .container {
+      .grid-1 {
+        height: clamp(500px, 62.5vh, 1400px);
+
+        .exp__sloganWrapper {
+          height: clamp(250px, 31vh, 700px);
+          padding: clamp(30px, 3.7vh, 85px) 0;
+          margin: clamp(40px, 5vh, 110px) 0;
+
+          .exp__sloganLine {
+            width: clamp(120px, 9.3vw, 360px);
+            height: clamp(3px, 0.3vh, 10px);
+          }
+
+          .exp__slogan {
+            h2.exp__sloganText {
+              font-size: clamp(35px, 4.3vh, 95px);
+            }
+          }
+        }
+
+        h1.exp__title {
+          font-size: clamp(50px, 5vh, 140px);
+          margin-bottom: clamp(40px, 5vh, 110px);
+        }
+      }
+
+      .grid-5 {
+        padding-top: clamp(150px, 18.7vh, 405px);
+        padding-left: clamp(2px, 0.1vw, 5px);
+        width: 50%;
+
+        &::before {
+          left: clamp(15px, 1.1vw, 45px);
+          width: clamp(4px, 0.3vw, 15px);
+        }
+
+        .timeline__item {
+          margin-bottom: clamp(100px, 12.5vh, 270px);
+
+          &::before {
+            left: clamp(5px, 0.4vw, 20px);
+            top: clamp(10px, 1.2vh, 30px);
+            width: clamp(20px, 2.5vh, 55px);
+            height: clamp(20px, 2.5vh, 55px);
+            border-radius: 50%;
+            border: clamp(6px, 0.7vh, 15px) solid f.$point1;
+          }
+
+          .timeline__logo {
+            width: clamp(350px, 15vw, 500px);
+            height: auto;
+            margin: clamp(20px, 2.5vh, 55px) 0 clamp(20px, 2.5vh, 55px) clamp(60px, 4.7vw, 235px);
+          }
+
+          .timeline__content {
+            margin-left: clamp(50px, 3.9vw, 190px);
+            margin-right: clamp(35px, 2.7vw, 105px);
+            border-radius: clamp(10px, 1.2vh, 30px);
+            padding: clamp(30px, 3.7vh, 85px);
+            border-left: clamp(8px, 1vh, 25px) solid f.$point1;
+
+            .timeline__period {
+              font-size: clamp(16px, 2vh, 45px);
+            }
+
+            .timeline__role {
+              font-size: clamp(23px, 2.8vh, 65px);
+              margin: clamp(14px, 1.7vh, 40px) 0;
+            }
+
+            .timeline__company {
+              font-size: clamp(20px, 2.5vh, 55px);
+              margin: 0;
+            }
+
+            .timeline__location {
+              font-size: clamp(16px, 2vh, 45px);
+            }
+
+            .timeline__bullets {
+              padding-left: clamp(18px, 1.4vw, 55px);
+              margin: clamp(20px, 2.5vh, 55px) 0;
+
+              li {
+                margin: clamp(10px, 1.2vh, 30px) 0;
+                font-size: clamp(16px, 2vh, 45px);
+              }
+            }
+
+            .timeline__tech,
+            .timeline__kpis {
+              gap: clamp(8px, 0.6vw, 25px);
+              margin: clamp(20px, 2.5vh, 55px) 0;
+
+              .timeline__chip,
+              .timeline__kpi {
+                padding: clamp(4px, 0.5vh, 10px) clamp(10px, 0.7vw, 30px);
+                font-size: clamp(14px, 1.7vh, 40px);
+                border-radius: clamp(6px, 0.7vh, 15px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

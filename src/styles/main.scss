@@ -1,0 +1,12 @@
+@use "./foundation" as *;
+
+@use "./reset";
+@use "./layout";
+
+@use "./components";
+@use "./pages";
+@use "./pages/sections";
+
+html, body {
+  font-family: $font-base;
+};

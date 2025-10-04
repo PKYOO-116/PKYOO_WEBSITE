@@ -1,0 +1,155 @@
+@use "../foundation" as f;
+
+/* Mobile ------------------------------------------------------------------------------------------------*/
+:root {
+  --nav-h: 48px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  border-bottom: 1px solid f.$border;
+  background: f.$darkBlue;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    f.$darkBlue 24px,
+    f.$darkBlue calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.nav__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 15px;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.nav__logoLink {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav__logo {
+  height: calc(var(--nav-h) - 4px);
+  width: auto;
+  object-fit: contain;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.nav__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 10px;
+  color: rgba(f.$white, 0.9);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  font: 900 12px f.$font-nav;
+  white-space: nowrap;
+
+  &.nav__item--active {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: -4px;
+      height: 2px;
+      background: f.$white;
+      border-radius: 2px;
+    }
+  }
+}
+
+/* Tablet ------------------------------------------------------------------------------------------------*/
+@include f.respond-to(tablet) {
+  :root {
+    --nav-h: 56px !important;
+  }
+
+  .nav__wrap {
+    gap: 29px;
+  }
+
+  .nav__list {
+    gap: 15px;
+  }
+
+  .nav__item {
+    padding: 3px 14px;
+    font-size: 15px;
+  }
+}
+
+/* Laptop ------------------------------------------------------------------------------------------------*/
+@include f.respond-to(laptop) {
+  :root {
+    --nav-h: 64px !important;
+  }
+
+  .nav__wrap {
+    gap: 40px;
+  }
+
+  .nav__list {
+    gap: 24px;
+  }
+
+  .nav__item {
+    padding: 4px 16px;
+    font-size: 20px;
+
+    &:hover {
+      background: rgba(f.$white, 0.03);
+    }
+  }
+}
+
+/* Desktop ------------------------------------------------------------------------------------------------*/
+@include f.respond-to(desktop) {
+  :root {
+    --nav-h: clamp(72px, 6.6vh, 150px) !important;
+  }
+  
+  .nav__wrap {
+    gap: clamp(42px, 4.1vw, 144px);
+  }
+
+  .nav__list {
+    gap: clamp(30px, 3vw, 120px);
+  }
+
+  .nav__item {
+    padding: 6px clamp(12px, 1.1vh, 24px);
+    font-size: clamp(22px, 1.2vw, 50px);
+
+    &:hover {
+      background: rgba(f.$white, 0.03);
+    }
+  }
+}

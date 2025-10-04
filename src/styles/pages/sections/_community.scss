@@ -1,0 +1,450 @@
+@use "../../foundation" as f;
+
+/* Mobile / ------------------------------------------------------------------- */
+.community {
+  .container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 350px auto auto;
+    padding: 0;
+
+    .grid-1 {
+      grid-area: 1 / 1 / 2 / 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h1.comm__title {
+        font-size: 35px;
+        font-weight: 700;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+
+    .grid-5 {
+      grid-area: 2 / 1 / 3 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 60px;
+
+      .comm__card {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        border-top: 4px solid f.$point1;
+        border-radius: 12px;
+        padding: 25px;
+        background: f.$grey;
+        cursor: default;
+        transition: background 0.3s ease;
+
+        &.expandable {
+          cursor: pointer;
+
+          &:hover {
+            background: rgba(f.$white, 0.05);
+          }
+        }
+
+        .comm__media {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          margin-bottom: 10px;
+
+          .comm__photo {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid rgba(f.$white, 0.2);
+            object-fit: contain;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.03);
+            }
+          }
+
+          .comm__logo {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+
+            &.clickable {
+              cursor: zoom-in;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+
+            &.white-bg {
+              background-color: white;
+              padding: 6px;
+              border-radius: 8px;
+            }
+          }
+        }
+
+        .comm__info {
+          .comm__period {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.7;
+            margin: 5px 0;
+          }
+
+          h2.comm__titleText {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 10px 0;
+          }
+
+          h3.comm__role {
+            font-size: 16px;
+            font-weight: 600;
+            color: f.$point1;
+            margin: 0;
+          }
+          
+          .comm__organization {
+            font-size: 14px;
+            font-weight: 300;
+            margin: 5px 0;
+          }
+
+          .comm__location {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.6;
+            margin: 5px 0;
+          }
+
+          .comm__bullets {
+            padding-left: 20px;
+            margin: 20px 0;
+
+            li {
+              list-style: disc;
+              font-size: 14px;
+              font-weight: 300;
+              margin: 5px 0;
+            }
+          }
+
+          .comm__moreHint {
+            font-size: 14px;
+            color: rgba(f.$white, 0.6);
+            margin-top: 10px;
+          }
+        }
+
+        .comm__expandedImgs {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 15px;
+
+          img {
+            width: 45%;
+            border-radius: 10px;
+            border: 1px solid rgba(f.$white, 0.2);
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.03);
+            }
+          }
+        }
+      }
+    }
+
+    .comm__imgFullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      background: rgba(f.$black, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        touch-action: pinch-zoom;
+      }
+
+      .comm__imgCloseBtn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 10000;
+      }
+    }
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .community {
+    .container {
+      .grid-1 {
+        h1.comm__title {
+          font-size: 45px;
+        }
+      }
+
+      .grid-5 {
+        .comm__card {
+          .comm__media {
+            gap: 20px;
+
+            .comm__logo {
+              width: 140px;
+              }
+            }
+
+          .comm__info {
+            .comm__period {
+              font-size: 16px;
+              margin: 10px 0;
+            }
+
+            h2.comm__titleText {
+              font-size: 23px;
+            }
+
+            h3.comm__role {
+              font-size: 16px;
+            }
+            
+            .comm__organization {
+              font-size: 20px;
+            }
+
+            .comm__location {
+              font-size: 16px;
+            }
+
+            .comm__bullets {
+              li {
+                font-size: 16px;
+                margin: 10px 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .community {
+    .container {
+      grid-template-rows: 300px auto auto;
+
+      .grid-1 {
+        padding: 0 40px;
+
+        h1.comm__title {
+          font-size: 50px;
+        }
+      }
+
+      .grid-5 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 30px 0;
+        padding: 0 60px;
+        margin-bottom: 80px;
+
+        .comm__card {
+          width: 95%;
+          border-radius: 15px;
+
+          .comm__media {
+            .comm__logo {
+              width: 150px;
+
+              &.white-bg {
+                padding: 10px;
+              }
+            }
+          }
+
+          .comm__info {
+            .comm__period {
+              font-size: 16px;
+              margin: 10px 0;
+            }
+
+            h2.comm__titleText {
+              font-size: 23px;
+            }
+
+            h3.comm__role {
+              font-size: 16px;
+            }
+            
+            .comm__organization {
+              font-size: 20px;
+            }
+
+            .comm__location {
+              font-size: 16px;
+            }
+
+            .comm__bullets {
+              li {
+                font-size: 16px;
+              }
+            }
+          }
+
+          .comm__expandedImgs {
+            gap: 15px;
+          }
+        }
+      }
+
+      .comm__imgFullscreen {
+        .comm__imgCloseBtn {
+          top: 50px;
+          right: 50px;
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .community {
+    .container {
+      grid-template-rows: 300px auto auto;
+      justify-items: center;
+
+      .grid-1 {
+        padding: 0 10%;
+
+        h1.comm__title {
+          font-size: clamp(50px, 5vh, 140px);
+        }
+      }
+
+      .grid-5 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        width: 65%;
+        gap: clamp(30px, 2.5vh, 65px) 0;
+        margin-bottom: clamp(80px, 6.6vh, 175px);
+
+        .comm__card {
+          width: 95%;
+          border-radius: 18px;
+          border-top: clamp(4px, 0.3vh, 10px) solid f.$point1;
+          padding: clamp(25px, 1.3vw, 50px);
+
+          .comm__media {
+            .comm__photo {
+              width: 60%;
+            }
+
+            .comm__logo {
+              width: clamp(150px, 7.8vw, 300px);
+
+              &.white-bg {
+                padding: 10px;
+              }
+            }
+          }
+
+          .comm__info {
+            .comm__period {
+              font-size: clamp(16px, 1.3vh, 35px);
+              margin: clamp(15px, 1.2vh, 35px) 0;
+            }
+
+            h2.comm__titleText {
+              font-size: clamp(23px, 1.9vh, 50px);
+              margin: clamp(15px, 1.2vh, 35px) 0;
+            }
+
+            h3.comm__role {
+              font-size: clamp(16px, 1.3vh, 35px);
+            }
+            
+            .comm__organization {
+              font-size: clamp(20px, 1.6vh, 40px);
+              margin: clamp(5px, 0.4vh, 10px) 0;
+            }
+
+            .comm__location {
+              font-size: clamp(16px, 1.3vh, 35px);
+              margin: clamp(5px, 0.4vh, 10px) 0;
+            }
+
+            .comm__bullets {
+              padding-left: clamp(20px, 1.6vh, 40px);
+              margin: clamp(20px, 1.6vh, 40px) 0;
+
+              li {
+                font-size: clamp(16px, 1.3vh, 35px);
+                margin: clamp(5px, 0.4vh, 10px) 0;
+              }
+            }
+
+            .comm__moreHint {
+              font-size: clamp(14px, 1.1vh, 35px);
+              margin-top: clamp(10px, 0.8vh, 25px);
+            }
+          }
+
+          .comm__expandedImgs {
+            gap: clamp(15px, 1.2vh, 35px);
+            margin-top: clamp(15px, 1.2vh, 35px);
+          }
+        }
+      }
+
+      .comm__imgFullscreen {
+        padding: clamp(20px, 1vw, 40px);
+
+
+        .comm__imgCloseBtn {
+          top: clamp(50px, 4.1vh, 110px);
+          right: clamp(50px, 4.1vh, 110px);
+          font-size: clamp(35px, 2.9vh, 75px);
+        }
+      }
+    }
+  }
+}

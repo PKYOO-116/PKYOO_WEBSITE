@@ -1,0 +1,711 @@
+@use "../../foundation" as f;
+@use "sass:color";
+
+/* Mobile --------------------------------------------------------------------------------------------------------------------------------- */
+@keyframes growToFullscreen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    top: calc(3vh + var(--nav-h));
+    left: 50%;
+    width: 90vw;
+    height: calc(85vh - var(--nav-h));
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects {
+  height: 120vh;
+
+  .container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 15% auto auto;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+
+    .grid-1 {
+      grid-area: 1 / 1 / 2 / 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h1.projects__title {
+        font-size: 35px;
+        font-weight: 700;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+
+    .grid-5 {
+      grid-area: 2 / 1 / 4 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .projects__searchBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+
+        .projects__searchInput {
+          width: 50vw;
+          padding: 8px 12px;
+          color: f.$white;
+          font-size: 16px;
+          border-radius: 6px;
+          border: 1px solid f.$point1;
+          background: f.$black;
+        }
+
+        .projects__searchBtn {
+          padding: 8px 14px;
+          font-size: 16px;
+          font-weight: 700;
+          background: f.$point1;
+          color: f.$black;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+
+          &:hover {
+            background: color.adjust(f.$point2, $lightness: 10%);
+          }
+        }
+      }
+
+      .projects__viewportBox {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 95vw;
+        height: 60vh;
+        margin: 10px 0;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        .projects__cardIcons {
+          display: flex;
+          gap: 8px;
+  
+          .projects__WebBtn {
+            background: f.$white;
+            border-radius: 5px;
+            padding: 6px;
+          }
+  
+          .projects__ghWebBtn,
+          .projects__WebBtn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            padding: 6px;
+            transition: background 0.3s ease;
+
+            img {
+              width: 20px;
+              height: 20px;
+            }
+  
+            &:hover {
+              background: f.$point1;
+            }
+          }
+        }
+
+        .projects__arrowBtn {
+          position: absolute;
+          top: 50%;
+          font-size: 80px;
+          transform: translateY(-50%);
+          background: rgba(f.$black, 0.3);
+          z-index: 10;
+          border: none;
+          transition: opacity 0.3s ease;
+          cursor: pointer;
+
+          &.left {
+            left: 0;
+          }
+
+          &.right {
+            right: 0;
+          }
+          &:disabled {
+            opacity: 0.2;
+            cursor: default;
+          }
+        }
+
+        .projects__viewport {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          width: 100%;
+          height: 100%;
+
+          .projects__card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            height: 60vh;
+            margin: 0;
+            padding: 0 20px;
+            z-index: 1;
+            pointer-events: none;
+            background-color: f.$grey;
+            border-radius: 15px;
+            border-top: 25px solid f.$grey;
+            border-right: 4px solid f.$point1;
+            border-bottom: 25px solid f.$grey;
+            border-left: 4px solid f.$point1;
+            box-shadow: 0 10px 40px rgba(f.$black, 0.4);
+            transform: translate(-50%, -50%) scale(0.85);
+            transition: all 0.5s ease;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+      
+            &::-webkit-scrollbar {
+              width: 0px;
+              height: 0px;
+              background: transparent;
+            }
+      
+            &.active {
+              transform: translate(-50%, -50%) scale(1);
+              opacity: 1;
+              z-index: 5;
+              pointer-events: auto;
+            }
+      
+            &.left {
+              transform: translate(-130%, -50%) scale(0.85) rotateY(15deg);
+              opacity: 0.5;
+              z-index: 2;
+            }
+      
+            &.right {
+              transform: translate(30%, -50%) scale(0.85) rotateY(-15deg);
+              opacity: 0.5;
+              z-index: 2;
+            }
+      
+            &.hidden {
+              opacity: 0;
+              transform: translate(-50%, -50%) scale(0.6);
+              z-index: 0;
+            }
+
+            h2.projects__cardTitle {
+              font: 700 20px f.$font-base;
+              margin: 20px 0;
+            }
+
+            .projects__cardCompany {
+              font: 600 16px f.$font-base;
+              color: f.$point1;
+              margin: 16px 0;
+            }
+
+            .projects__bullets {
+              margin: 15px 0;
+              padding: 0 15px;
+
+              li {
+                list-style: disc;
+                font: 300 14px f.$font-base;
+                margin: 8px 0;
+              }
+            }
+      
+            .projects__imgs {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              margin: 20px 0;
+
+              img {
+                height: 80px;
+                width: auto;
+                border-radius: 8px;
+                border: 1px solid rgba(f.$white, 0.2);
+              }
+    
+              .clickable-img {
+                cursor: zoom-in;
+                transition: transform 0.3s ease;
+      
+                &:hover {
+                  transform: scale(1.05);
+                }
+              }
+            }
+      
+            .projects__tech,
+            .projects__kpis {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin: 15px 0;
+      
+              .projects__chip,
+              .projects__kpi {
+                color: f.$black;
+                padding: 4px 10px;
+                font-size: 14px;
+                font-weight: 700;
+                border-radius: 6px;
+              }
+      
+              .projects__chip {
+                background: f.$point1;
+              }
+      
+              .projects__kpi {
+                background: f.$point2;
+              }
+            }
+          }
+        }
+      }
+
+      .projects__imgFullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        background: rgba(f.$black, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: zoom-out;
+  
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          touch-action: pinch-zoom;
+        }
+  
+        .projects__imgCloseBtn {
+          position: absolute;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 10000;
+        }
+      }
+
+      .projects__dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0 50px;
+  
+        .projects__dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(f.$white, 0.3);
+          border: none;
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &.active {
+            width: 16px;
+            height: 16px;
+            background: f.$point1;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .projects {
+    .container {
+      .grid-1 {
+        h1.projects__title {
+          font-size: 45px;
+        }
+      }
+
+      .grid-5 {
+        .projects__searchBar {
+          .projects__searchInput {
+            width: 60vw;
+            font-size: 16px;
+          }
+        }
+
+        .projects__viewportBox {
+          margin: 15px 0;
+
+          .projects__cardIcons {
+            gap: 10px;
+
+            .projects__ghWebBtn,
+            .projects__WebBtn {
+              img {
+                width: 25px;
+                height: 25px;
+              }
+            }
+          }
+
+          .projects__viewport {
+            .projects__card {
+              h2.projects__cardTitle {
+                font: 700 23px f.$font-base;
+              }
+
+              .projects__cardCompany {
+                font: 600 20px f.$font-base;
+              }
+
+              .projects__bullets {
+                margin: 20px 0;
+                padding: 0 18px;
+
+                li {
+                  font: 300 16px f.$font-base;
+                  margin: 10px 0;
+                }
+              }
+
+              .projects__imgs {
+                gap: 15px;
+
+                img {
+                  height: 120px;
+                }
+              }
+
+              .projects__tech,
+              .projects__kpis {
+                margin: 20px 0;
+
+                .projects__chip,
+                .projects__kpi {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+
+        .projects__imgFullscreen {    
+          .projects__imgCloseBtn {
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+          }
+        }
+
+        .projects__dots {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .projects {
+    .container {
+      grid-template-rows: 10% auto auto;
+
+      .grid-1 {
+        h1.projects__title {
+          font-size: 50px;
+        }
+      }
+
+      .grid-5 {
+        .projects__viewportBox {
+          width: 70vw;
+          height: 55vh;
+
+          .projects__cardIcons {
+            gap: 10px;
+
+            .projects__ghWebBtn,
+            .projects__WebBtn {
+              img {
+                width: 25px;
+                height: 25px;
+              }
+            }
+          }
+
+          .projects__arrowBtn {
+            font-size: 100px;
+
+            &.left {
+              left: 5px;
+            }
+
+            &.right {
+              right: 5px;
+            }
+          }
+
+          .projects__viewport {
+            .projects__card {
+              width: 60%;
+              height: 95%;
+              padding: 0 25px;
+
+              h2.projects__cardTitle {
+                font: 700 23px f.$font-base;
+              }
+
+              .projects__cardCompany {
+                font: 600 20px f.$font-base;
+                margin: 16px 0;
+              }
+
+              .projects__bullets {
+                margin: 20px 0;
+                padding: 0 18px;
+
+                li {
+                  font: 300 16px f.$font-base;
+                  margin: 10px 0;
+                }
+              }
+
+              .projects__imgs {
+                gap: 15px;
+
+                img {
+                  height: 120px;
+                }
+              }
+
+              .projects__tech,
+              .projects__kpis {
+                margin: 20px 0;
+              }
+            }
+          }
+        }
+
+        .projects__imgFullscreen {    
+          .projects__imgCloseBtn {
+            top: 50px;
+            right: 50px;
+            font-size: 35px;
+          }
+        }
+
+        .projects__dots {
+          margin-top: 15px;
+
+          .projects__dot {
+            width: 15px;
+            height: 15px;
+            
+            &.active {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .projects {
+    .container {
+      grid-template-rows: 10% auto auto;
+
+      .grid-1 {
+        h1.projects__title {
+          font-size: clamp(50px, 5vh, 140px);
+        }
+      }
+
+      .grid-5 {
+        .projects__searchBar {
+          gap: clamp(12px, 0.6vw, 20px);
+
+          .projects__searchInput {
+            width: 45vw;
+            padding: clamp(8px, 0.7vh, 20px) clamp(12px, 0.6vw, 20px);
+            font-size: clamp(16px, 1.3vh, 35px);
+            border-radius: clamp(6px, 0.5vh, 15px);
+            border: clamp(1px, 0.08vh, 5px) solid f.$point1;
+          }
+
+          .projects__searchBtn {
+            padding: clamp(8px, 0.4vw, 15px) clamp(14px, 0.7vw, 25px);
+            font-size: clamp(16px, 1.3vh, 35px);
+            border-radius: clamp(6px, 0.5vh, 15px);
+
+            &:hover {
+              background: color.adjust(f.$point2, $lightness: 10%);
+            }
+          }
+        }
+
+        .projects__viewportBox {
+          height: 55vh;
+          width: 55vw;
+
+          .projects__cardIcons {
+            gap: clamp(10px, 0.5vw, 15px);
+
+            .projects__WebBtn {
+              border-radius: clamp(5px, 0.4vh, 10px);
+            }
+
+            .projects__ghWebBtn,
+            .projects__WebBtn {
+              border-radius: clamp(6px, 0.5vh, 10px);
+              padding: clamp(6px, 0.5vh, 10px);
+
+              img {
+                width: clamp(25px, 2vh, 50px);
+                height: clamp(25px, 2vh, 50px);
+              }
+            }
+          }
+
+          .projects__arrowBtn {
+            font-size: clamp(100px, 8.3vh, 240px);
+
+            &.left {
+              left: clamp(5px, 0.3vw, 10px);
+            }
+
+            &.right {
+              right: clamp(5px, 0.3vw, 10px);
+            }
+          }
+
+          .projects__viewport {
+            .projects__card {
+              width: 60%;
+              height: 95%;
+              padding: clamp(25px, 2vh, 70px);
+              border-radius: clamp(15px, 1.2vh, 40px);
+              border-top: clamp(25px, 2vh, 70px) solid f.$grey;
+              border-right: clamp(4px, 0.2vw, 10px) solid f.$point1;
+              border-bottom: clamp(25px, 2vh, 70px) solid f.$grey;
+              border-left: clamp(4px, 0.2vw, 10px) solid f.$point1;
+              box-shadow: 0 clamp(10px, 0.5vw, 15px) clamp(40px, 3.3vh, 95px) rgba(f.$black, 0.4);
+
+              h2.projects__cardTitle {
+                font: 700 clamp(23px, 1.9vh, 55px) f.$font-base;
+                margin: clamp(20px, 1.6vh, 40px) 0;
+              }
+
+              .projects__cardCompany {
+                font: 600 clamp(20px, 1.6vh, 40px) f.$font-base;
+                margin: clamp(16px, 1.3vh, 40px) 0;
+              }
+
+              .projects__bullets {
+                margin: clamp(20px, 1.6vh, 40px) 0;
+                padding: 0 clamp(18px, 0.9vw, 35px);
+
+                li {
+                  font: 300 clamp(16px, 1.3vh, 40px) f.$font-base;
+                  margin: clamp(10px, 0.8vh, 25px) 0;
+                }
+              }
+
+              .projects__imgs {
+                gap: clamp(15px, 0.7vw, 30px);
+                margin: clamp(20px, 1.6vh, 40px) 0;
+
+                img {
+                  height: clamp(120px, 10vh, 325px);
+                  border-radius: clamp(8px, 0.6vh, 20px);
+                  border: clamp(1px, 0.08vh, 5px) solid rgba(f.$white, 0.2);
+                }
+              }
+
+              .projects__tech,
+              .projects__kpis {
+                gap: clamp(8px, 0.4vw, 15px);
+                margin: clamp(20px, 1.6vh, 40px) 0;
+
+                .projects__chip,
+                .projects__kpi {
+                  font-size: clamp(14px, 1.1vh, 35px);
+                  padding: clamp(4px, 0.3vh, 10px) clamp(10px, 0.5vw, 20px);
+                  border-radius: clamp(6px, 0.5vh, 15px);
+                }
+              }
+            }
+          }
+        }
+
+        .projects__imgFullscreen {
+          padding: clamp(20px, 1.6vh, 40px);
+
+          .projects__imgCloseBtn {
+            position: absolute;
+            top: clamp(50px, 4.1vh, 110px);
+            right: clamp(50px, 4.1vh, 110px);
+            font-size: clamp(35px, 2.9vh, 75px);
+          }
+        }
+
+        .projects__dots {
+          gap: clamp(8px, 0.4vw, 15px);
+          margin: clamp(15px, 1.8vh, 40px) 0 clamp(50px, 4.1vh, 110px);
+
+          .projects__dot {
+            width: clamp(15px, 1.2vh, 35px);
+            height: clamp(15px, 1.2vh, 35px);
+            background: rgba(f.$white, 0.3);
+
+            &.active {
+              width: clamp(18px, 1.4vh, 35px);
+              height: clamp(18px, 1.4vh, 35px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use "../foundation" as f;
+
+.loader { position: fixed; inset: 0; z-index: 9999; pointer-events:none; }
+
+.loader__bar{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100vh;
+  transform-origin: 50% 50%;
+  background: #fff;
+  z-index: 3;
+}
+
+.loader__panelHalf {
+  position: absolute; top: 0; bottom: 0; width: 50vw; background: #000;
+  z-index: 2;
+}
+
+.loader__panelLeft  { left:  0; right: auto; }
+.loader__panelRight { right: 0; left:  auto; }

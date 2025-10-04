@@ -1,0 +1,31 @@
+// Colors
+$black: #000000;
+$white: #ffffff;
+$material: #121212;
+$darkBlue: #04060d;
+$grey: #363338;
+$border: #565656;
+$text-muted: rgba(#fff, 0.88);
+
+$point1: #b1ddf1;
+$point2: #5eb9e2;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/alan-sans@5.0.18/index.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+$font-nav: 'Poppins', 'Noto Sans', 'Archivo', 'Open Sans';
+$font-body: 'Poppins', 'Alan Sans', 'Open Sans', sans-serif;
+$font-title: 'Poppins', 'DM Serif Text', 'Archivo';
+$font-contact: 'Poppins', 'Archivo', 'Noto Sans', 'Open Sans', sans-serif;
+$font-base: 'Poppins', 'Noto Sans', 'Archivo', 'Open Sans';
+
+// Layout (Screen Size)
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;

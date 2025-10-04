@@ -1,0 +1,235 @@
+@use "../../foundation" as f;
+
+/* Mobile --------------------------------------------------------------------------------------------------------------------------------- */
+.education {
+  height: 100vh;
+  
+  .container {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: 20% auto auto;
+
+    .grid-1 {
+      grid-column: 1 / 4;
+      grid-row: 1 / 2;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+
+      h1.edu__title {
+        font:700 35px f.$font-base;
+        margin-bottom: 30px;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+
+    .grid-4 {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5%;
+
+      .edu__stage {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+
+        .edu__item {
+          .edu__school {
+            font: 600 18px f.$font-base;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            .edu__locaTime {
+              font-size: 14px;
+              font-weight: 100;
+              display: flex;
+              flex-direction: column;
+              margin-top: 5px;
+            }
+          }
+        }
+
+        .edu__body {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .edu__logo {
+            margin: 5px 0 0 0;
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            background: f.$white;
+            border-radius: 8px;
+            padding: 3px;
+          }
+          
+          .edu__degree {
+            font-size: 14px;
+          }
+          .edu__major {
+            font: 700 18px f.$font-base;
+          }
+          .edu__minor {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Tablet --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(tablet) {
+  .education {
+    .container {
+      .grid-1 {
+        h1.edu__title {
+          font-size: 45px;
+        }
+      }
+
+      .grid-4 {
+        .edu__stage {
+          .edu__item {
+            .edu__school {
+              font-size: 24px;
+
+              .edu__locaTime {
+                font-size: 18px;
+              }
+            }
+          }
+
+          .edu__body {
+            gap: 12px;
+
+            .edu__logo {
+              width: 88px;
+              height: 88px;
+            }
+            .edu__degree {
+              font-size: 22px;
+            }
+            .edu__major {
+              font-size: 28px;
+            }
+            .edu__minor {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Laptop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(laptop) {
+  .education {
+    .container {
+      grid-template-rows: 15% auto auto;
+      .grid-1 {
+        h1.edu__title {
+          font-size: 50px;
+          margin-bottom: 30px
+        }
+      }
+
+      .grid-4 {
+        padding-top: 0;
+        
+        .edu__stage {          
+          .edu__item {
+            .edu__school {
+              font-size: 25px;
+
+              .edu__locaTime {
+                font-size: 18px;
+              }
+            }
+          }
+
+          .edu__body {
+            gap: 18px;
+
+            .edu__logo {
+              width: 104px;
+              height: 104px;
+            }
+            .edu__degree {
+              font-size: 25px;
+            }
+            .edu__major {
+              font-size: 32px;
+            }
+            .edu__minor {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Desktop --------------------------------------------------------------------------------------------------------------------------------- */
+@include f.respond-to(desktop) {
+  .education {
+    .container {
+      .grid-1 {
+        align-items: center;
+
+        h1.edu__title {
+          font-size: clamp(50px, 5vh, 140px);
+          margin: 0;
+        }
+      }
+
+      .grid-4 {
+        padding-top: 0;
+        .edu__stage {
+          gap: clamp(30px, 3.7vh, 90px);
+          .edu__item {
+            .edu__school {
+              font-size: clamp(25px, 3vh, 70px);
+              margin-bottom: clamp(10px, 1vh, 50px);
+
+              .edu__locaTime {
+                font-size: clamp(18px, 2.2vh, 70px);
+              }
+            }
+          }
+
+          .edu__body {
+            gap: clamp(18px, 2.2vh, 50px);
+
+            .edu__logo {
+              width: clamp(104px, 13vh, 300px);
+              height: clamp(104px, 13vh, 300px);
+            }
+            .edu__degree {
+              font-size: clamp(25px, 3.1vh, 70px);
+            }
+            .edu__major {
+              font-size: clamp(32px, 4vh, 90px);
+              margin-top: clamp(3px, 0.2vh, 30px)
+            }
+            .edu__minor {
+              font-size: clamp(18px, 2.2vh, 50px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

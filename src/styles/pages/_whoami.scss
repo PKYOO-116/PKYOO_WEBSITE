@@ -1,0 +1,12 @@
+@use "../foundation" as *;
+
+.whoPage {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+
+  scroll-behavior: smooth;
+}
+
+.whoSec {
+  border-top: 2pt solid rgba(grey, 0.2);
+}
