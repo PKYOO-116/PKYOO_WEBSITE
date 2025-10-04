@@ -4,7 +4,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html, body, #root { height: 100%; overflow-x: hidden;}
+html, body, #root { height: auto; overflow: auto; scroll-behavior: auto;}
 
 body {
   margin: 0;

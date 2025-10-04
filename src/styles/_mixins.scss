@@ -8,8 +8,8 @@
 
 section {
   width: 100vw;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: visible;
+  overflow-y: visible;
 }
 
 @mixin respond-to($breakpoint) {
