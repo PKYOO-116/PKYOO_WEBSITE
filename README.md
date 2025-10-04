@@ -18,8 +18,6 @@ Animations, card sliders, fullscreen popups, and responsive grids are used to cr
 
 ## Sections
 
----
-
 | Section    | Description                                                             |
 | ---------- | ----------------------------------------------------------------------- |
 | Home       | Landing page with animated name/title                                   |
@@ -30,8 +28,6 @@ Animations, card sliders, fullscreen popups, and responsive grids are used to cr
 | Community  | Volunteering and activities, some with image galleries                  |
 | Daily      | Creative photo collage with randomized layout and animation             |
 | Contact    | Email form (Formspree) with animated confirmation popup                 |
-
----
 
 ---
 
