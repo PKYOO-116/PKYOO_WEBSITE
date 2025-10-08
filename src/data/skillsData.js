@@ -136,7 +136,7 @@ export const skillsData = [
       { name: "China" },
       { name: "Indonesia" },
       { name: "Los Angels" },
-      { name: "NewYork" },
+      { name: "New York" },
       { name: "Texas" },
     ],
   },
