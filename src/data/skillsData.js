@@ -86,6 +86,8 @@ export const skillsData = [
       { name: "JavaScript", logo: javascript },
       { name: "SQL", logo: sql },
       { name: "R", logo: r },
+      { name: "MS Excel"},
+      { name: "DAX"},
     ],
   },
   {
