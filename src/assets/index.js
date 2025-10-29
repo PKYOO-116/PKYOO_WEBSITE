@@ -1,5 +1,5 @@
 // Home Profile / Nav Logo
-import profileImg from "./pics/Home/pkyoo.jpeg";
+import profileImg from "./pics/Home/pkyoo.png";
 import profileLogo from "./logos/pkyoo_logo.png";
 
 // Contact logos
