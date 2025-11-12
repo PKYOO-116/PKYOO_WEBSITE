@@ -103,7 +103,7 @@ export const experienceData = [
     bullets: [
       "Researched competitors, customers, and legal issues for subsidiary establishment project",
       "Created brochures, websites, and business cards for marketing and sales",
-      "Collected and organized occupational accident data into company DB",
+      "Collected and organized Project portfolio and data into company Database",
       "Facilitated communication across planning, admin, marketing, design, sales, and PM teams",
       "Prepared real estate market outlook reports using macro indicators (population, GDP, CPI, etc.)",
     ],
