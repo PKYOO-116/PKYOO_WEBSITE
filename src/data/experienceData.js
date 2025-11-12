@@ -22,8 +22,9 @@ export const experienceData = [
     location: "Los Angeles, CA",
     website: "https://fpm.usc.edu/",
     bullets: [
-      "Identified irrigation meters and integrated data from two monitoring systems",
-      "Reconstructed database with Python-based automated update program",
+      "Closely working with engineers to identify 50 irrigation meters from overall 180 water meters list",
+      "Integration of data into a new database from two monitoring systems",
+      "Reconstruction of database with Python-based automated update program",
       "Developed and deployed Power BI dashboards for leadership review",
       "Analysis of campus utility consumption and billing data",
     ],
@@ -42,7 +43,7 @@ export const experienceData = [
     location: "South Korea",
     website: "https://iexcello.com/",
     bullets: [
-      "Led national R&D AI-driven digital transformation projects (~$25M) including planning, budgeting, proposals, project managing",
+      "Led national R&D AI-driven digital transformation projects (~$21M) including planning, budgeting, proposals, project managing",
       "Managed Data-driven digitalization projects at Hyundai Steel, POSCO, and SeAH CSS",
       "Business analysis and C-suite support for decision-making in business, finance, and other important areas",
       "Defined optimization goals using data-driven solution: 10% cost reduction, productivity increase, 25% energy efficiency improvement",
@@ -84,9 +85,10 @@ export const experienceData = [
     website: "https://www.airforce.mil.kr/user/indexMain.action?command=&siteId=airforce-eng",
     bullets: [
       "Led squad for base defense and search missions",
+      "New Recruits Training",
     ],
     kpis: [
-      { label: "Personnel Led", value: "15+" },
+      { label: "Personnel Trained and Led", value: "15+" },
     ],
     tech: ["Leadership", "Security Operations"],
   },
