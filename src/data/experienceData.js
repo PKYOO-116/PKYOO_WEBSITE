@@ -105,7 +105,7 @@ export const experienceData = [
       "Created brochures, websites, and business cards for marketing and sales",
       "Collected and organized Project portfolio and data into company Database",
       "Facilitated communication across planning, admin, marketing, design, sales, and PM teams",
-      "Prepared real estate market outlook reports using macro indicators (population, GDP, CPI, etc.)",
+      "Prepared real estate market outlook reports using macro and micro indicators (population, GDP, CPI, etc.)",
     ],
     kpis: [
       { label: "Reports", value: "5+" },
