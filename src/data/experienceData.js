@@ -101,7 +101,7 @@ export const experienceData = [
     location: "Ho Chi Minh City, Vietnam",
     website: "https://www.sypm.com.vn/",
     bullets: [
-      "Researched competitors, customers, and legal issues for subsidiary establishment project",
+      "Researched competitors, potential clients, and legal issues for subsidiary establishment project",
       "Created brochures, websites, and business cards for marketing and sales",
       "Collected and organized Project portfolio and data into company Database",
       "Facilitated communication across planning, admin, marketing, design, sales, and PM teams",
