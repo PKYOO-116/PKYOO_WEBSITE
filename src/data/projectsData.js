@@ -81,9 +81,9 @@ export const projectsData = [
       "Enabled live data insert/edit/delete via Firebase Realtime DB",
     ],
     kpis: [
-      "NoSQL Realtime DB",
+      "Google Firebase",
       "Full-stack App",
-      "Web Scraping",
+      "Praw API",
       "Keyword-based Scoring",
       "Realtime CRUD"
     ],
