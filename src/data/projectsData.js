@@ -150,8 +150,8 @@ export const projectsData = [
         "Evaluated model performance disparities across ethnic groups using MIMIC-III ICU data with logistic regression, random forest, and MLP models.",
         "Applied SHAP and threshold adjustments to improve fairness in sepsis diagnosis."
     ],
-    kpis: ["AI Fairness", "SHAP", "Logistic Regression", "Random Forest", "MLP", "MIMIC-III"],
-    tech: ["Python", "Pandas", "Scikit-learn", "SHAP"],
+    kpis: ["AI Fairness", "SHAP", "Logistic Regression", "Random Forest", "MLP", "MIMIC-III", "Confusion Matrix"],
+    tech: ["Python", "Pandas", "Scikit-learn", "SHAP", "Google BigQuery"],
     img: [imgDSCI531, imgDSCI531_2, imgDSCI531_report]
   },
   {
